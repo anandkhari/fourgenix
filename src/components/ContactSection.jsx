@@ -25,11 +25,11 @@ export const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-6 bg-indigo-100 p-4 sm:p-8"
+      className="flex flex-col gap-6 bg-[var(--bg-light-blue)] p-6 sm:p-8"
     >
       <div>
         {/* 4. CHANGED: Label size to text-base */}
-        <label htmlFor="name" className="mb-2 block text-base font-medium text-gray-900">
+        <label htmlFor="name" className="mb-2 block body">
           full Name :
         </label>
         <Input
@@ -44,7 +44,7 @@ export const ContactForm = () => {
 
       <div>
         {/* 4. CHANGED: Label size to text-base */}
-        <label htmlFor="email" className="mb-2 block text-base font-medium text-gray-900">
+        <label htmlFor="email" className="mb-2 block body">
           Email Adders :
         </label>
         <Input
@@ -59,7 +59,7 @@ export const ContactForm = () => {
 
       <div>
         {/* 4. CHANGED: Label size to text-base */}
-        <label htmlFor="message" className="mb-2 block text-base font-medium text-gray-900">
+        <label htmlFor="message" className="mb-2 block body">
           Enter Your Message :
         </label>
         {/* 5. CHANGED: Textarea height to min-h-[140px] */}
@@ -90,8 +90,8 @@ const ContactInfoItem = ({ icon: Icon, title, content }) => (
       <Icon className="h-7 w-7" />
     </div>
     <div>
-      <h3 className="text-lg font-medium text-gray-900">{title}</h3>
-      <p className="text-base text-gray-600">{content}</p>
+      <h3 className="text-xl font-[var(--font-work-sans)] text-gray-900">{title}</h3>
+      <p className="text-base body text-gray-600">{content}</p>
     </div>
   </div>
 );
@@ -100,13 +100,13 @@ const ContactInfoItem = ({ icon: Icon, title, content }) => (
 export const ContactSection = () => {
   return (
     // 1. CHANGED: Background to 'bg-gray-50'
-    <section className="bg-gray-50 py-20 sm:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+    <section className="bg-gray-50 py-16 sm:py-32">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 sm:px-6 lg:grid-cols-2 lg:px-8">
         
         {/* Left Column: Info */}
         <div className="flex flex-col justify-center gap-12">
           {/* 2. CHANGED: Weight to 'font-light' and added 'leading-tight' */}
-          <h2 className="text-3xl font-light heading-font leading-tight text-gray-900 sm:text-5xl">
+          <h2 className='px-2'>
             We are always ready to help you and answer your questions
           </h2>
           <div className="flex flex-col gap-6">

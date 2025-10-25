@@ -1,8 +1,8 @@
 import React from 'react'
-import { Header } from '@/components/Header'
+import  Header  from '@/components/Header'
 import { HeroSection } from '@/components/Hero'
 import { AboutIntroSection } from '@/components/AboutIntroSection'
-import { HealthPartnerSection} from '@/components/HealthPartnerSection'
+import { WhyPartnerSection} from '@/components/WhyPartnerSection'
 import { ValuesBanner } from '@/components/ValuesBanner'
 import { ServicesSection } from '@/components/ServicesSection'
 import { FaqSection } from '@/components/FaqSection'
@@ -16,9 +16,9 @@ const page = () => {
       <Header />
       <HeroSection />
       <AboutIntroSection />
-      <HealthPartnerSection />
+      <WhyPartnerSection />
       <ValuesBanner />
-       <ServicesSection />
+      <ServicesSection />
       <FaqSection />
       <ContactSection />
       <Footer />

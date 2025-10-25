@@ -9,7 +9,7 @@ export default function NewsletterForm() {
   return (
     <div className="relative z-10 max-w-lg">
       {/* Heading */}
-      <h2 className="text-3xl font-light leading-tight text-gray-900 sm:text-5xl">
+      <h2 className="px-2">
         Thinking in your mailbox
       </h2>
 

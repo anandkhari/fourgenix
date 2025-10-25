@@ -42,8 +42,6 @@
 }
 
 @theme inline {
-  --font-body: "CeramonDemo-Regular, sans-serif";
-  --font-contat: "Poppins-Regular, sans-serif";
 
   --text-color: #2a2a2a;
   --h1-color: #353960;
@@ -56,6 +54,9 @@
 
   --body-line-height: 30px;
   --contat-line-height: normal;
+
+  --bg-light-blue: #DCDEFF;
+
 }
 
 :root {
@@ -137,8 +138,48 @@
 }
 
 @layer utilities {
-  .heading-font {
+  /* === HEADING STYLE === */
+  .heading {
     font-family: var(--font-work-sans);
+    color: var(--h1-color);
+    font-size: var(--body-font-size);
+    font-weight: var(--body-font-weight);
+    line-height: var(--body-line-height);
+  }
+
+  /* === BODY STYLE === */
+.body {
+  font-family: var(--font-poppins);
+  color: var(--text-color);
+  font-weight: var(--contat-font-weight);
+  font-size: 16px; /* mobile-first: smaller text */
+  line-height: 24px; /* mobile-friendly */
+}
+
+/* Tablet screens (sm: 640px - 1023px) */
+@media (min-width: 640px) {
+  .body {
+    font-size: 17px;
+    line-height: 25px;
+  }
+}
+
+/* Desktop screens (md: 1024px and above) */
+@media (min-width: 1024px) {
+  .body {
+    font-size: 18px; /* original desktop size */
+    line-height: 26px;
+  }
+}
+
+
+}
+
+@layer base {
+  h2 {
+    @apply font-[var(--font-work-sans)] text-[26px] leading-[39px] text-[#1A1A1A] font-normal;
+    @apply sm:text-[34px] sm:leading-[44px];
+    @apply md:text-[48px] md:leading-[56px];
   }
 }
 

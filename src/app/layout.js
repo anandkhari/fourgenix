@@ -1,10 +1,16 @@
 import "./globals.css";
-import { Work_Sans } from "next/font/google";
+import { Work_Sans, Poppins } from "next/font/google";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-work-sans",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
 });
 
 export const metadata = {
@@ -15,7 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${workSans.variable} antialiased`}>
+      <body
+        className={`${poppins.variable} ${workSans.variable} font-[var(--font-poppins)] antialiased`}
+      >
         {children}
       </body>
     </html>
