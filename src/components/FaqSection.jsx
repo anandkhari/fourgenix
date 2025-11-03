@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "./ui/accordion";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
@@ -41,60 +41,78 @@ export const FaqSection = () => {
   const [openItem, setOpenItem] = useState("item-1");
 
   return (
-    <section className="bg-white py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-2">
+    <section className="bg-white py-20 sm:py-20">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Title */}
         <div className="max-w-2xl">
-          <h2 className="max-w-xl pl-2">FAQ About The Individual Chapters.</h2>
+          <h2 className="text-3xl sm:text-4xl font-[var(--font-work-sans)] font-semibold text-gray-900 leading-tight">
+            FAQ About The Individual Chapters.
+          </h2>
         </div>
-
-        {/* Accordion */}
-        <div className="mt-16">
-          <Accordion
-            type="single"
-            collapsible
-            className="w-full"
-            value={openItem}
-            onValueChange={(val) => setOpenItem(val)}
-          >
-            {faqData.map((faq) => {
-              const isOpen = openItem === faq.id;
-              return (
-                <AccordionItem
-                  key={faq.id}
-                  value={faq.id}
-                  className={`mb-4 overflow-hidden rounded-3xl border transition-all duration-300 shadow-sm ${
-                    isOpen
-                      ? "bg-[#E8E9FF] border-transparent"
-                      : "bg-white border-gray-200"
-                  }`}
-                >
-                  <AccordionTrigger className="flex items-center justify-between w-full px-4 py-4 text-left text-xl sm:text-2xl font-[var(--font-work-sans)] font-medium text-gray-900 hover:no-underline">
-                    <div className="flex items-center gap-4">
-                      {/* Left blue strip */}
-                      <div className="h-10 w-1.5 bg-primary-700 rounded-full"></div>
-                      <span>{faq.question}</span>
-                    </div>
-
-                    {/* Rotating circular arrow */}
-                    <div
-                      className={`flex items-center justify-center aspect-square w-10 rounded-full border-2 border-[#2a2d58] transition-all duration-300 ${
+        {/* --- Grid layout: FAQ 2/3 | Image 1/3 --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+          {/* Left: FAQ section (2/3) */}
+          <div className="lg:col-span-2">
+            {/* Accordion */}
+            <div className="mt-12">
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full"
+                value={openItem}
+                onValueChange={(val) => setOpenItem(val)}
+              >
+                {faqData.map((faq) => {
+                  const isOpen = openItem === faq.id;
+                  return (
+                    <AccordionItem
+                      key={faq.id}
+                      value={faq.id}
+                      className={`mb-4 overflow-hidden rounded-3xl border transition-all duration-300 shadow-sm ${
                         isOpen
-                          ? "rotate-90 bg-white"
-                          : "rotate-0 bg-transparent"
+                          ? "bg-[#E8E9FF] border-transparent"
+                          : "bg-white border-gray-200"
                       }`}
                     >
-                      <ChevronRightIcon className="h-6 w-6 text-primary-700" />
-                    </div>
-                  </AccordionTrigger>
+                      <AccordionTrigger className="flex items-center justify-between w-full px-4 py-2 text-left text-xl sm:text-2xl font-[var(--font-work-sans)] font-medium text-gray-900 hover:no-underline">
+                        <div className="flex items-center gap-4">
+                          {/* Left blue strip */}
+                          <div className="h-10 w-1.5 bg-primary-700 rounded-full"></div>
+                          <span>{faq.question}</span>
+                        </div>
 
-                  <AccordionContent className="px-10 pb-6 body">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
+                        {/* Rotating circular arrow */}
+                        <div
+                          className={`flex items-center justify-center aspect-square w-10 rounded-full border-2 border-[#2a2d58] transition-all duration-300 ${
+                            isOpen
+                              ? "rotate-90 bg-white"
+                              : "rotate-0 bg-transparent"
+                          }`}
+                        >
+                          <ChevronRightIcon className="h-6 w-6 text-primary-700" />
+                        </div>
+                      </AccordionTrigger>
+
+                      <AccordionContent className="px-10 pb-6 body text-gray-700 text-sm leading-relaxed">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>
+            </div>
+          </div>
+
+          {/* Right: Image section (1/3) */}
+          <div className="relative lg:col-span-1 mt-12 hidden lg:block">
+            <img
+              src="/FAQ.png"
+              alt="Professional at work"
+              className="w-full rounded-3xl object-cover shadow-lg"
+            />
+            {/* Optional overlay gradient */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-white/10 to-transparent pointer-events-none"></div>
+          </div>
         </div>
       </div>
     </section>

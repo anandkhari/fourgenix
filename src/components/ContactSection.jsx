@@ -1,8 +1,9 @@
 'use client';
 
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
+import { Input } from '../components/ui/input';
+import { Textarea } from '../components/ui/textarea';
+import { Button } from '../components/ui/button';
+
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';

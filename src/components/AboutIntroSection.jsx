@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { Button } from './ui/button';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
 export const AboutIntroSection = () => {

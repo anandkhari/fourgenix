@@ -7,7 +7,7 @@ const Header = () => {
 
   const menuItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "About", href: "/About" },
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
   ];
@@ -86,7 +86,7 @@ const Header = () => {
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`md:hidden fixed top-[88px] left-0 w-full bg-light-blue shadow-md transform transition-transform duration-300 origin-top rounded-b-lg overflow-hidden z-50
+        className={`md:hidden fixed top-[88px] left-0 w-full bg-white shadow-md transform transition-transform duration-300 origin-top rounded-b-lg overflow-hidden z-50
     ${
       isOpen
         ? "translate-y-0 opacity-100"

@@ -1,4 +1,6 @@
 import "./globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Work_Sans, Poppins } from "next/font/google";
 
 const workSans = Work_Sans({
@@ -24,7 +26,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} ${workSans.variable} font-[var(--font-poppins)] antialiased`}
       >
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,58 +1,75 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import NewsletterForm from "@/components/NewsletterForm";
+import Image from "next/image";
+import Link from "next/link";
+import NewsletterForm from "./NewsletterForm";
 
-// Footer link data
+// 1. UPDATED: Content from your document
 const footerLinks = {
   quick: [
-    { title: 'Home', href: '/' },
-    { title: 'About Us', href: '/about' },
-    { title: 'Services', href: '/services' },
-    { title: 'Contact', href: '/contact' },
+    { title: "Home", href: "/" },
+    { title: "About Us", href: "/about" },
+    { title: "Services", href: "/services" },
+    { title: "Contact", href: "/contact" },
   ],
-  visit: [{ title: 'FOURGENIX PARTNERS LLC', href: '#' }],
+  visit: [
+    { title: "FOURGENIX PARTNERS LLC" },
+    { title: "7901 4th St N, Ste 300" },
+    { title: "St. Petersburg, FL" },
+  ],
   contact: [
-    {
-      title:
-        'We specialize in U.S. individual tax filing, U.S. expat taxation, and cross-border advisory services.',
-      href: '#',
-    },
+    { title: "Fourgenix@gmail.com", href: "mailto:Fourgenix@gmail.com" },
+    { title: "+60-998930645", href: "tel:+60998930645" },
   ],
 };
 
-// Reusable Footer Column
+// 2. REFACTORED: Reusable Footer Column
 const FooterLinkColumn = ({ title, links }) => (
   <div className="flex flex-col gap-4">
-    <h3 className="text-2xl sm:text-3xl font-[var(--font-work-sans)]">{title}</h3>
-    <ul className="space-y-2 sm:space-y-3">
+    {/* 3. CHANGED: Styling to match site's design system */}
+    <h3 className="text-lg font-medium text-gray-900">
+      {title}
+    </h3>
+    <ul className="space-y-2">
       {links.map((link) => (
         <li key={link.title}>
-          <Link href={link.href} className="body hover:text-primary-700">
-            {link.title}
-          </Link>
+          {/* 4. ADDED: Logic to render <p> if no href, or <Link> if href exists */}
+          {link.href ? (
+            <Link
+              href={link.href}
+              className="text-base text-gray-600 hover:text-gray-900"
+            >
+              {link.title}
+            </Link>
+          ) : (
+            <p className="text-base text-gray-600">
+              {link.title}
+            </p>
+          )}
         </li>
       ))}
     </ul>
   </div>
 );
 
-export const Footer = () => {
+const Footer = () => {
   return (
-    <footer className="relative bg-white pt-12 sm:pt-16 lg:pt-24">
-      <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
-        {/* Newsletter Form */}
-        <NewsletterForm />
+    // 5. CHANGED: Adjusted background and padding
+    <footer className="relative bg-gray-50 pt-12 sm:pt-16 lg:pt-24">
+      <div className="mx-auto max-w-8xl px-6 sm:px-8 lg:px-8 ml-2 lg:ml-10">
+        
+        {/* 6. CHANGED: Passed 'size="footer"' prop to NewsletterForm */}
+        <NewsletterForm size="footer" />
 
         {/* Links + Logo Section */}
-        <div className="relative z-10 mt-6 sm:mt-16 grid grid-cols-1 gap-12 sm:gap-16 border-t border-gray-300 pt-12 sm:pt-16 lg:grid-cols-4">
+        <div className="relative z-10 mt-12 sm:mt-16 grid grid-cols-1 gap-12 border-t border-gray-200 pt-12 sm:pt-16 lg:grid-cols-4">
           {/* Logo */}
           <div className="flex justify-start lg:justify-start">
             <Image
-              src="/logo.png"
+              src="/logo.png" // TODO: Update logo path if needed
               alt="Fourgenix Brand"
               width={314}
               height={236}
-              className="rounded-2xl object-contain w-48 sm:w-56 md:w-64 lg:w-full"
+              // 7. CHANGED: Adjusted logo size
+              className="rounded-2xl object-contain w-40"
             />
           </div>
 
@@ -67,11 +84,12 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="relative z-10 mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0 border-t border-gray-300 py-6 sm:py-8">
-          <p className="text-gray-600 font-[var(--font-work-sans)] text-center sm:text-left">
+        <div className="relative z-10 mt-12 sm:mt-16 flex flex-col items-center justify-between gap-4 border-t border-gray-200 py-6 sm:flex-row">
+          {/* 8. CHANGED: Styling to match site's design system */}
+          <p className="text-sm text-gray-600 text-center sm:text-left">
             @ Fourgenix Partners LLC
           </p>
-          <p className="text-gray-600 font-[var(--font-work-sans)] text-center sm:text-right">
+          <p className="text-sm text-gray-600 text-center sm:text-right">
             Privacy Policy and Terms & Condition
           </p>
         </div>
@@ -79,3 +97,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;
