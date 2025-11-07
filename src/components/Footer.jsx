@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import NewsletterForm from "./NewsletterForm";
 
-// 1. UPDATED: Content from your document
 const footerLinks = {
   quick: [
     { title: "Home", href: "/" },
@@ -21,26 +20,23 @@ const footerLinks = {
   ],
 };
 
-// 2. REFACTORED: Reusable Footer Column
 const FooterLinkColumn = ({ title, links }) => (
-  <div className="flex flex-col gap-4">
-    {/* 3. CHANGED: Styling to match site's design system */}
-    <h3 className="text-lg font-medium text-gray-900">
+  <div className="flex flex-col gap-3 sm:gap-4 text-left pl-5 sm:text-left">
+    <h3 className="text-lg sm:text-xl font-semibold font-worksans text-white">
       {title}
     </h3>
     <ul className="space-y-2">
       {links.map((link) => (
         <li key={link.title}>
-          {/* 4. ADDED: Logic to render <p> if no href, or <Link> if href exists */}
           {link.href ? (
             <Link
               href={link.href}
-              className="text-base text-gray-600 hover:text-gray-900"
+              className="text-base sm:text-lg text-gray-300 font-poppins hover:text-white transition-colors duration-200"
             >
               {link.title}
             </Link>
           ) : (
-            <p className="text-base text-gray-600">
+            <p className="text-base sm:text-lg font-poppins text-gray-300">
               {link.title}
             </p>
           )}
@@ -52,45 +48,39 @@ const FooterLinkColumn = ({ title, links }) => (
 
 const Footer = () => {
   return (
-    // 5. CHANGED: Adjusted background and padding
-    <footer className="relative bg-gray-50 pt-12 sm:pt-16 lg:pt-24">
-      <div className="mx-auto max-w-8xl px-6 sm:px-8 lg:px-8 ml-2 lg:ml-10">
-        
-        {/* 6. CHANGED: Passed 'size="footer"' prop to NewsletterForm */}
-        <NewsletterForm size="footer" />
+    <footer className="relative bg-brand pt-10 sm:pt-12 lg:pt-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
+        {/* Newsletter */}
+
+          <NewsletterForm size="footer" />
+      
 
         {/* Links + Logo Section */}
-        <div className="relative z-10 mt-12 sm:mt-16 grid grid-cols-1 gap-12 border-t border-gray-200 pt-12 sm:pt-16 lg:grid-cols-4">
+        <div className="relative z-10 mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-20 border-t border-white/20 pt-12">
           {/* Logo */}
-          <div className="flex justify-start lg:justify-start">
+          <div className="flex justify-start sm:justify-start">
             <Image
-              src="/logo.png" // TODO: Update logo path if needed
+              src="/logo-dark.png"
               alt="Fourgenix Brand"
-              width={314}
-              height={236}
-              // 7. CHANGED: Adjusted logo size
-              className="rounded-2xl object-contain w-40"
+              width={180}
+              height={180}
+              className="rounded-2xl object-contain w-40 sm:w-48"
             />
           </div>
 
-          {/* Quick Links */}
+          {/* Columns */}
           <FooterLinkColumn title="Quick links" links={footerLinks.quick} />
-
-          {/* Visit Us */}
           <FooterLinkColumn title="Visit Us At" links={footerLinks.visit} />
-
-          {/* Contact Us */}
           <FooterLinkColumn title="Contact us" links={footerLinks.contact} />
         </div>
 
         {/* Bottom Bar */}
-        <div className="relative z-10 mt-12 sm:mt-16 flex flex-col items-center justify-between gap-4 border-t border-gray-200 py-6 sm:flex-row">
-          {/* 8. CHANGED: Styling to match site's design system */}
-          <p className="text-sm text-gray-600 text-center sm:text-left">
-            @ Fourgenix Partners LLC
+        <div className="relative z-10 mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/20 py-6">
+          <p className="text-sm text-gray-300 text-center sm:text-left">
+            © Fourgenix Partners LLC
           </p>
-          <p className="text-sm text-gray-600 text-center sm:text-right">
-            Privacy Policy and Terms & Condition
+          <p className="text-sm text-gray-300 text-center sm:text-right hover:text-white transition-colors duration-200">
+            Privacy Policy & Terms & Conditions
           </p>
         </div>
       </div>

@@ -24,7 +24,7 @@ const features = [
 const AboutStory = () => {
   return (
     // Using brand-light for the section background
-    <section className="bg-brand-light py-16 sm:py-24">
+    <section className="bg-gray-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* --- Top Card --- */}
         <div className="overflow-hidden rounded-3xl bg-white ">
@@ -70,7 +70,7 @@ const AboutStory = () => {
       >
         {/* Icon Section */}
         <div className="flex-shrink-0">
-          <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full [background-color:var(--bg-light-blue)]">
+          <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-brand-light">
             <Icon className="h-6 w-6 sm:h-7 sm:w-7 text-brand-orange" />
           </div>
         </div>

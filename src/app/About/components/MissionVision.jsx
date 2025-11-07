@@ -8,7 +8,7 @@ const InfoCard = ({ icon: Icon, title, text }) => {
         
         {/* Left Column: Icon + Title */}
         <div className="md:col-span-1 flex flex-col gap-4 md:pr-6 md:border-r md:border-gray-300">
-          <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-xl bg-gray-900 text-white">
+          <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-xl bg-brand text-white">
             <Icon className="h-8 w-8 md:h-10 md:w-10" />
           </div>
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-worksans font-light text-gray-900 leading-tight">

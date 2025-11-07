@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -11,27 +12,27 @@ const services = [
     title: "FBAR Filings – Annual reporting for foreign accounts exceeding $10,000",
     image: "/service-1.png",
     highlight: true,
+    slug: "fbar",
   },
   {
     id: 2,
     title: "Expat Tax Filing – Compliance support for U.S. citizens and green card holders abroad",
     image: "/service-2.png",
-    highlight: false,
+    slug: "expat-tax-filing",
   },
   {
     id: 3,
     title: "U.S. Individual Tax Returns – Complete preparation and filing for individuals",
     image: "/service-3.png",
-    highlight: false,
+    slug: "us-individual-tax-returns",
   },
   {
     id: 4,
     title: "Foreign Business Ownership Reporting – Filing guidance for businesses outside the U.S.",
     image: "/service-4.png",
-    highlight: false,
+    slug: "foreign-business-ownership-reporting",
   },
 ];
-
 
 export default function ServicesSection() {
   return (
@@ -45,9 +46,7 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2>
-            Our Tax Services
-          </h2>
+          <h2 className="text-3xl font-semibold text-gray-900">Our Tax Services</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             Comprehensive U.S. tax solutions designed for individuals and
             businesses worldwide.
@@ -83,13 +82,16 @@ export default function ServicesSection() {
                   {service.title}
                 </p>
 
-                <button className="group inline-flex items-center text-indigo-900 font-medium hover:underline underline-offset-4">
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="group inline-flex items-center text-indigo-900 font-medium hover:underline underline-offset-4"
+                >
                   Read More
                   <ArrowRight
                     className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"
                     strokeWidth={2}
                   />
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}

@@ -41,11 +41,11 @@ export const FaqSection = () => {
   const [openItem, setOpenItem] = useState("item-1");
 
   return (
-    <section className="bg-white py-20 sm:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="bg-gray-100 py-20 sm:py-20">
+      <div className="mx-auto max-w-8xl px-6 lg:px-20">
         {/* Section Title */}
         <div className="max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl font-[var(--font-work-sans)] font-semibold text-gray-900 leading-tight">
+          <h2 >
             FAQ About The Individual Chapters.
           </h2>
         </div>
@@ -74,7 +74,7 @@ export const FaqSection = () => {
                           : "bg-white border-gray-200"
                       }`}
                     >
-                      <AccordionTrigger className="flex items-center justify-between w-full px-4 py-2 text-left text-xl sm:text-2xl font-[var(--font-work-sans)] font-medium text-gray-900 hover:no-underline">
+                      <AccordionTrigger className="flex items-center justify-between w-full px-4 py-2 text-left text-xl sm:text-2xl font-worksans text-gray-900 hover:no-underline">
                         <div className="flex items-center gap-4">
                           {/* Left blue strip */}
                           <div className="h-10 w-1.5 bg-primary-700 rounded-full"></div>
@@ -93,7 +93,7 @@ export const FaqSection = () => {
                         </div>
                       </AccordionTrigger>
 
-                      <AccordionContent className="px-10 pb-6 body text-gray-700 text-sm leading-relaxed">
+                      <AccordionContent className="px-10 pb-6 text-gray-700 text-base font-poppins leading-relaxed">
                         {faq.answer}
                       </AccordionContent>
                     </AccordionItem>

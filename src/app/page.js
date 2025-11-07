@@ -2,7 +2,6 @@ import React from "react";
 import { HeroSection } from "../components/Hero";
 import { AboutIntroSection } from "../components/AboutIntroSection";
 import { WhyPartnerSection } from "../components/WhyPartnerSection";
-import { ValuesBanner } from "../components/ValuesBanner";
 import { ServicesSection } from "../components/ServicesSection";
 import { FaqSection } from "../components/FaqSection";
 import { ContactSection } from "../components/ContactSection";
@@ -13,9 +12,9 @@ const page = () => {
     <div>
       <HeroSection />
       <AboutIntroSection />
-      <WhyPartnerSection />
-      <ValuesBanner />
+    
       <ServicesSection />
+        <WhyPartnerSection />
       <FaqSection />
       <ContactSection />
     </div>

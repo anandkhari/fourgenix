@@ -13,7 +13,7 @@ export const AboutIntroSection = () => {
         alt="Fourgenix team member"
         width={700}
         height={500}
-        className="object-cover rounded-xl shadow-lg"
+        className="object-cover shadow-lg"
       />
     </div>
 

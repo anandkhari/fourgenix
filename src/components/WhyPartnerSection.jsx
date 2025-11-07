@@ -42,7 +42,7 @@ export const WhyPartnerSection = () => {
                   className="rounded-2xl object-cover"
                 />
               </div>
-              <div className="relative aspect-square w-full">
+              <div className="relative aspect-square w-full hidden sm:block">
                 <Image
                   src="/health2.png"
                   alt="Professionals looking at a tablet"
