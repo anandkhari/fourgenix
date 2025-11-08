@@ -5,12 +5,14 @@ import { useState } from "react";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const menuItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/About" },
-    { name: "Services", href: "/services" },
-    { name: "Contact", href: "/contact" },
-  ];
+const menuItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/About" },
+  { name: "Services", href: "/services" },
+  // { name: "Blog", href: "/blog" },   // <-- added blog
+  { name: "Contact", href: "/contact" },
+];
+
 
   return (
     <header className="absolute left-0 top-0 z-100 w-full py-2 px-4 bg-[#DCDEFF] md:bg-transparent">
