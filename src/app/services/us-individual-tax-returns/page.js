@@ -13,7 +13,7 @@ const page = () => {
       />
 
       <ServiceIntroSection
-        imageSrc="/us-individual-tax-hero.png"
+        imageSrc="/us-individual-tax-hero.jpg"
         title="U.S. Individual Tax Returns"
         description="Filing an accurate U.S. individual tax return (Form 1040) is essential to comply with federal tax laws and claim all eligible credits and deductions. At FourGenix, we provide end-to-end preparation, filing, and advisory services for U.S. residents and citizens worldwide."
       />

@@ -40,22 +40,22 @@ const AboutStory = () => {
             </div>
 
             {/* Text Section */}
-            <div className="flex flex-col justify-center p-2 lg:w-1/2 lg:p-16">
-              <h2 className="mb-4 ">Who We Are?</h2>
-              <p className="mb-4  text-brand-gray body">
-                {/* Replaced text with Trueline context */}
-                Trueline is a U.S.-based technology firm founded by a passionate
-                team of digital innovators. With over 15 years of expertise in
-                digital identity, NFC technology, and international compliance,
-                we bring world-class financial insight with a personal touch.
-              </p>
-              <p className="text-brand-gray body">
-                We specialize in creating seamless, secure, and instant digital
-                profile solutions. Our custom-made strategies are designed to
-                bring your physical identity into the digital world, ensuring
-                100% compliance with all legal standards.
-              </p>
-            </div>
+         <div className="flex flex-col justify-center p-2 lg:w-1/2 lg:p-16">
+  <h2 className="mb-4 ">Who We Are?</h2>
+  <p className="mb-4 text-brand-gray body">
+    Fourgenix Partners is a U.S.-based tax and advisory firm founded by a
+    team of four experienced professionals. With over 15 years of expertise
+    in U.S. taxation, expat tax matters, and international compliance, we
+    bring world-class financial insight with a personal touch.
+  </p>
+  <p className="text-brand-gray body">
+    We specialize in U.S. individual and expat tax filing, as well as
+    cross-border advisory services. Our custom-made strategies are designed
+    to minimize your tax liability while ensuring 100% compliance with all
+    legal standards.
+  </p>
+</div>
+
           </div>
         </div>
 

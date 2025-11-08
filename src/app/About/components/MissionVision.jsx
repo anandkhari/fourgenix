@@ -30,13 +30,14 @@ const InfoCard = ({ icon: Icon, title, text }) => {
 
 // The main section component
 const MissionVision = () => {
-  const missionText = [
-    "We deliver trusted, client-focused tax and financial solutions that simplify compliance and create real value for individuals and businesses. Our ethical, data-driven approach helps clients minimize risk and seize opportunities globally."
-  ];
+ const missionText = [
+  "At Fourgenix, we provide trusted, client-focused tech and business solutions that simplify processes and create tangible value for companies and individuals. Our ethical, data-driven approach helps clients reduce risks and maximize opportunities globally."
+];
 
-  const visionText = [
-    "We aim to be a global leader in taxation and financial advisory, empowering individuals and businesses worldwide with simple, ethical, and future-ready financial solutions."
-  ];
+const visionText = [
+  "Fourgenix strives to be a global leader in innovative business and technology solutions, empowering organizations and individuals worldwide with simple, ethical, and future-ready strategies."
+];
+
 
   return (
     <section className="bg-gray-50 py-12 sm:py-16 md:py-20 lg:py-32">
