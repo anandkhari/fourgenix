@@ -6,10 +6,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
 const menuItems = [
-  { name: "Home", href: "/" },
+  // { name: "Home", href: "/" },
   { name: "About", href: "/About" },
   { name: "Services", href: "/services" },
-  // { name: "Blog", href: "/blog" },   // <-- added blog
+  { name: "Blog", href: "/blog" },
+  { name: "Who we serve", href: "/audience" },   // <-- added blog
   { name: "Contact", href: "/contact" },
 ];
 
@@ -21,7 +22,7 @@ const menuItems = [
         <a href="/">
           <img
             className="w-18 md:w-[100px] h-auto"
-            src="logo.png"
+            src="/logo.png"
             alt="Fourgenix Logo"
           />
         </a>
