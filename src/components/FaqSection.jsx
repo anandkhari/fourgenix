@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +9,21 @@ import {
 } from "./ui/accordion";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+
+// --- Animation Variant for Staggered Items ---
+const itemVariants = {
+  // Initial state (hidden)
+  hidden: { opacity: 0, y: 30 },
+  // Visible state (uses 'custom' index for staggered delay)
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.1, // Stagger delay based on index (0.1s per item)
+    },
+  }),
+};
 
 // FAQ data
 const faqData = [
@@ -43,17 +59,23 @@ export const FaqSection = () => {
   return (
     <section className="bg-gray-100 py-20 sm:py-20">
       <div className="mx-auto max-w-8xl px-6 lg:px-20">
-        {/* Section Title */}
-        <div className="max-w-2xl">
+        {/* Section Title - Animated Fade-up */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="max-w-2xl"
+        >
           <h2 >
             FAQ About The Individual Chapters.
           </h2>
-        </div>
+        </motion.div>
+
         {/* --- Grid layout: FAQ 2/3 | Image 1/3 --- */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-          {/* Left: FAQ section (2/3) */}
+          {/* Left: FAQ section (2/3) - Accordion List */}
           <div className="lg:col-span-2">
-            {/* Accordion */}
             <div className="mt-12">
               <Accordion
                 type="single"
@@ -62,49 +84,64 @@ export const FaqSection = () => {
                 value={openItem}
                 onValueChange={(val) => setOpenItem(val)}
               >
-                {faqData.map((faq) => {
+                {faqData.map((faq, index) => {
                   const isOpen = openItem === faq.id;
                   return (
-                    <AccordionItem
+                    // Individual Accordion Item Wrapper - Animated
+                    <motion.div
                       key={faq.id}
-                      value={faq.id}
-                      className={`mb-4 overflow-hidden rounded-3xl border transition-all duration-300 shadow-sm ${
-                        isOpen
-                          ? "bg-[#E8E9FF] border-transparent"
-                          : "bg-white border-gray-200"
-                      }`}
+                      variants={itemVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      custom={index} // Pass index for stagger delay
+                      viewport={{ once: true, amount: 0.2 }} // Trigger animation when 20% visible
                     >
-                      <AccordionTrigger className="flex items-center justify-between w-full px-4 py-2 text-left text-xl sm:text-2xl font-worksans text-gray-900 hover:no-underline">
-                        <div className="flex items-center gap-4">
-                          {/* Left blue strip */}
-                          <div className="h-10 w-1.5 bg-primary-700 rounded-full"></div>
-                          <span>{faq.question}</span>
-                        </div>
+                      <AccordionItem
+                        value={faq.id}
+                        className={`mb-4 overflow-hidden rounded-3xl border transition-all duration-300 shadow-sm ${
+                          isOpen
+                            ? "bg-[#E8E9FF] border-transparent"
+                            : "bg-white border-gray-200"
+                        }`}
+                      >
+                        <AccordionTrigger className="flex items-center justify-between w-full px-4 py-2 text-left text-xl sm:text-2xl font-worksans text-gray-900 hover:no-underline">
+                          <div className="flex items-center gap-4">
+                            {/* Left blue strip */}
+                            <div className="h-10 w-1.5 bg-primary-700 rounded-full"></div>
+                            <span>{faq.question}</span>
+                          </div>
 
-                        {/* Rotating circular arrow */}
-                        <div
-                          className={`flex items-center justify-center aspect-square w-10 rounded-full border-2 border-[#2a2d58] transition-all duration-300 ${
-                            isOpen
-                              ? "rotate-90 bg-white"
-                              : "rotate-0 bg-transparent"
-                          }`}
-                        >
-                          <ChevronRightIcon className="h-6 w-6 text-primary-700" />
-                        </div>
-                      </AccordionTrigger>
+                          {/* Rotating circular arrow */}
+                          <div
+                            className={`flex items-center justify-center aspect-square w-10 rounded-full border-2 border-[#2a2d58] transition-all duration-300 ${
+                              isOpen
+                                ? "rotate-90 bg-white"
+                                : "rotate-0 bg-transparent"
+                            }`}
+                          >
+                            <ChevronRightIcon className="h-6 w-6 text-primary-700" />
+                          </div>
+                        </AccordionTrigger>
 
-                      <AccordionContent className="px-10 pb-6 text-gray-700 text-base font-poppins leading-relaxed">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
+                        <AccordionContent className="px-10 pb-6 text-gray-700 text-base font-poppins leading-relaxed">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </motion.div>
                   );
                 })}
               </Accordion>
             </div>
           </div>
 
-          {/* Right: Image section (1/3) */}
-          <div className="relative lg:col-span-1 mt-12 hidden lg:block">
+          {/* Right: Image section (1/3) - Animated Slide-in */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative lg:col-span-1 mt-12 hidden lg:block"
+          >
             <img
               src="/FAQ.png"
               alt="Professional at work"
@@ -112,7 +149,7 @@ export const FaqSection = () => {
             />
             {/* Optional overlay gradient */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-white/10 to-transparent pointer-events-none"></div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

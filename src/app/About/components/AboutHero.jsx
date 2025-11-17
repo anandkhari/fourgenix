@@ -4,7 +4,7 @@ export default function AboutHero() {
   return (
 
     <section
-      className="relative bg-[url('/pages-hero.png')] bg-cover bg-center py-16 sm:py-16 lg:py-16 mt-12 sm:mt-12 lg:mt-30  rounded-b-3xl overflow-hidden"
+      className="relative bg-[url('/pages-hero.png')] bg-cover bg-center py-16 sm:py-16 lg:py-16 mt-12 sm:mt-12 lg:mt-18  rounded-b-3xl overflow-hidden"
     >
       {/* Content Container: Sets max-width, padding, and positioning */}
       <div className="relative max-w-7xl  mx-auto px-6 text-left">

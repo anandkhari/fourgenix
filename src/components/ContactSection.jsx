@@ -1,120 +1,185 @@
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "sonner";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Button } from "../components/ui/button";
 
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import { PhoneIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import {
+  PhoneIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+} from "@heroicons/react/24/solid";
 
-// Contact form component
+/* -------------------------------------- */
+/* ANIMATION VARIANTS                     */
+/* -------------------------------------- */
+const fadeUp = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.25, ease: "easeOut" },
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.25, ease: "easeOut" },
+  },
+};
+
+const hoverLift = {
+  whileHover: {
+    y: -3,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+};
+
+/* -------------------------------------- */
+/* CONTACT FORM (FORMSPREE + TOAST)       */
+/* -------------------------------------- */
 export const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ name, email, message });
-    // Reset form
-    setName("");
-    setEmail("");
-    setMessage("");
+    setLoading(true);
+
+    const formData = new FormData(e.target);
+
+    const response = await fetch("https://formspree.io/f/xeovwnpb", {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    });
+
+    setLoading(false);
+
+    if (response.ok) {
+      toast.success("Message sent successfully! 🎉");
+      e.target.reset();
+    } else {
+      toast.error("Something went wrong! Please try again.");
+    }
   };
 
   return (
-    <form
+    <motion.form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-6 bg-brand-light p-6 sm:p-8"
+      variants={fadeIn}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col gap-6 bg-brand-light p-6 sm:p-8 rounded-xl"
     >
-      <div>
-        {/* 4. CHANGED: Label size to text-base */}
+      {/* Full Name */}
+      <motion.div variants={fadeUp}>
         <label htmlFor="name" className="mb-2 block body">
           Full Name :
         </label>
         <Input
           id="name"
+          name="name"
           type="text"
           placeholder="Enter your full name"
-           className="h-14 rounded-xl border-0 bg-white shadow-sm placeholder:text-lg placeholder:text-gray-400 placeholder:opacity-70"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          className="h-14 rounded-xl border-0 bg-white shadow-sm placeholder:text-lg placeholder:text-gray-400"
+          required
         />
-      </div>
+      </motion.div>
 
-      <div>
-        {/* 4. CHANGED: Label size to text-base */}
+      {/* Email */}
+      <motion.div variants={fadeUp}>
         <label htmlFor="email" className="mb-2 block body">
-          Email Adders :
+          Email Address :
         </label>
         <Input
           id="email"
+          name="email"
           type="email"
           placeholder="Enter your email address"
-           className="h-14 rounded-xl border-0 bg-white shadow-sm placeholder:text-lg placeholder:text-gray-400 placeholder:opacity-70"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          className="h-14 rounded-xl border-0 bg-white shadow-sm placeholder:text-lg placeholder:text-gray-400"
+          required
         />
-      </div>
+      </motion.div>
 
-      <div>
-        {/* 4. CHANGED: Label size to text-base */}
+      {/* Message */}
+      <motion.div variants={fadeUp}>
         <label htmlFor="message" className="mb-2 block body">
           Enter Your Message :
         </label>
-        {/* 5. CHANGED: Textarea height to min-h-[140px] */}
         <Textarea
           id="message"
+          name="message"
           placeholder="Your message here..."
-           className="h-14 rounded-xl border-0 bg-white shadow-sm placeholder:text-lg placeholder:text-gray-400 placeholder:opacity-70"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          className="min-h-[140px] rounded-xl border-0 bg-white shadow-sm placeholder:text-lg placeholder:text-gray-400"
+          required
         />
-      </div>
+      </motion.div>
 
-      {/* 6. CHANGED: Removed 'mt-4' to rely on parent flex 'gap-6' */}
-      <Button
-        variant="dark"
-        size="hero"
-        type="submit"
-        className="flex w-60 items-center justify-between"
-      >
-        <span>Send Your Message</span>
-      </Button>
-    </form>
+      {/* Submit Button */}
+      <motion.div variants={fadeUp} {...hoverLift}>
+        <Button
+          variant="dark"
+          size="hero"
+          type="submit"
+          disabled={loading}
+          className="flex w-60 items-center justify-between"
+        >
+          {loading ? "Sending..." : "Send Your Message"}
+        </Button>
+      </motion.div>
+    </motion.form>
   );
 };
 
-// Contact info item component
+/* -------------------------------------- */
+/* CONTACT INFO ITEM                      */
+/* -------------------------------------- */
 const ContactInfoItem = ({ icon: Icon, title, content }) => (
-  <div className="flex items-center gap-4">
-    {/* 3. CHANGED: Icon box size to h-14 w-14 */}
-    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#2a2d58] text-white">
-      {/* 3. CHANGED: Icon size to h-7 w-7 */}
+  <motion.div
+    variants={fadeUp}
+    {...hoverLift}
+    className="flex items-center gap-4"
+  >
+    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#2a2d58] text-white">
       <Icon className="h-7 w-7" />
     </div>
+
     <div>
       <h3 className="text-xl font-[var(--font-work-sans)] text-gray-900">
         {title}
       </h3>
       <p className="text-base body text-gray-600">{content}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
-// Contact section component
+/* -------------------------------------- */
+/* CONTACT SECTION WRAPPER                */
+/* -------------------------------------- */
 export const ContactSection = () => {
   return (
-    // 1. CHANGED: Background to 'bg-gray-50'
     <section className="bg-gray-100 py-16 sm:py-32">
-      <div className="mx-auto grid max-w-8xl grid-cols-1 gap-16 px-6 sm:px-6 lg:grid-cols-2 lg:px-20">
-        {/* Left Column: Info */}
-        <div className="flex flex-col justify-center gap-12">
-          {/* 2. CHANGED: Weight to 'font-light' and added 'leading-tight' */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ staggerChildren: 0.12 }}
+        className="mx-auto grid max-w-8xl grid-cols-1 gap-16 px-6 sm:px-6 lg:grid-cols-2 lg:px-20"
+      >
+        {/* Info Section */}
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-col justify-center gap-12"
+        >
           <h2 className="px-2">
             We are always ready to help you and answer your questions
           </h2>
+
           <div className="flex flex-col gap-6">
             <ContactInfoItem
               icon={PhoneIcon}
@@ -132,13 +197,13 @@ export const ContactSection = () => {
               content="Sanfranciso,USA, Tower 24, Church Street"
             />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right Column: Form */}
-        <div>
+        {/* Contact Form */}
+        <motion.div variants={fadeUp}>
           <ContactForm />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

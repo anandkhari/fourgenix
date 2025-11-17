@@ -15,7 +15,7 @@ function getPlainText(body) {
 function BlogHero() {
   return (
     <section className="relative bg-[url('/pages-hero.png')] bg-cover bg-center bg-no-repeat rounded-b-3xl overflow-hidden
-    py-12 sm:py-16 lg:py-16 mt-14 sm:mt-14 lg:mt-30"
+    py-12 sm:py-14 lg:py-14 mt-14 sm:mt-14 lg:mt-18"
 >
   <div className="max-w-7xl mx-auto px-6 text-left">
     <p className="text-sm sm:text-base font-medium text-gray-700 mb-1 sm:mb-2">

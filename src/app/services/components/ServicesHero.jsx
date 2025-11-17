@@ -7,7 +7,7 @@ import { ChevronRight } from "lucide-react";
 export default function ServicesHero({ title = "Services", subtitle }) {
   return (
     <section
-      className="relative bg-[url('/pages-hero.png')] bg-cover bg-center py-16 sm:py-20 lg:py-16 mt-12 sm:mt-12 lg:mt-16 rounded-b-3xl overflow-hidden"
+      className="relative bg-[url('/pages-hero.png')] bg-cover bg-center py-16 sm:py-16 lg:py-16 mt-12 sm:mt-12 lg:mt-18 rounded-b-3xl overflow-hidden"
     >
       <div className="relative max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center ">
         {/* Left side: Label + Title */}

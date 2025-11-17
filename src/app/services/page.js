@@ -6,7 +6,7 @@ import ServicesSection from "./components/ServicesSection"
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#DCDEFF] text-foreground">
+    <div className="flex flex-col min-h-screen  text-foreground">
         <ServicesHero />
         <TrustedTaxSection />
         <ServicesSection />

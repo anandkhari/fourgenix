@@ -2,6 +2,9 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Work_Sans, Poppins } from "next/font/google";
+import { Toaster } from "sonner";
+import WhatsAppButton from "../components/WhatsAppButton"; 
+
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -26,8 +29,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} ${workSans.variable} font-[var(--font-poppins)] antialiased`}
       >
+        {/* Toast system available globally */}
+        <Toaster position="top-center" richColors />
+
+        {/* Global Layout */}
         <Header />
         <main>{children}</main>
+        <WhatsAppButton />
         <Footer />
       </body>
     </html>
