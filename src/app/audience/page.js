@@ -86,8 +86,8 @@ function AudienceHero() {
         relative bg-[url('/pages-hero.png')] 
         bg-cover bg-center bg-no-repeat 
         rounded-b-3xl overflow-hidden
-        py-12 sm:py-16 lg:py-16 mt-14 sm:mt-14 lg:mt-18
-        min-h-[300px]
+        py-16 sm:py-16 lg:py-16 mt-14 sm:mt-14 lg:mt-18
+        
       "
     >
       <div className="max-w-7xl mx-auto px-6 text-left">
@@ -132,7 +132,7 @@ export default function WhoWeHelpPage() {
     <main className="bg-white">
       <AudienceHero />
 
-      <section className="py-16 md:py-16">
+      <section className=" md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Intro text */}
@@ -143,7 +143,7 @@ export default function WhoWeHelpPage() {
             viewport={{ once: true, amount: 0.3 }}
             className="text-left max-w-5xl mb-12"
           >
-            <p className="mt-4 font-worksans text-xl text-gray-700">
+            <p className=" font-worksans text-xl text-gray-700">
               We provide specialized, high-touch advisory services for a diverse range of clients.
               Select your profile to learn how we can help you build a smarter financial future.
             </p>

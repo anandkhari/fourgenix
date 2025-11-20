@@ -1,10 +1,11 @@
 "use client"; // Added: Essential for Framer Motion client-side functionality
 
-import React from 'react'; // Added: Good practice to explicitly import React
-import Image from 'next/image';
-import { Button } from './ui/button';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
-import { motion } from 'framer-motion'; // Added: Import motion
+import React from "react"; // Added: Good practice to explicitly import React
+import Image from "next/image";
+import { Button } from "./ui/button";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion"; // Added: Import motion
+import Link from "next/link";
 
 // Define animation variants for image (Column 1)
 const imageVariants = {
@@ -16,7 +17,8 @@ const imageVariants = {
 const textContainerVariants = {
   hidden: { opacity: 0, x: 50 }, // Start right and invisible
   visible: {
-    opacity: 1, x: 0,
+    opacity: 1,
+    x: 0,
     transition: {
       duration: 0.8,
       ease: "easeOut",
@@ -32,12 +34,10 @@ const textItemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }, // Slide up and fade in
 };
 
-
 export const AboutIntroSection = () => {
   return (
     <section className="bg-white">
       <div className="mx-auto grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
-        
         {/* Column 1: Image - Wrapped with motion.div for slide-in animation */}
         <motion.div
           variants={imageVariants}
@@ -52,7 +52,7 @@ export const AboutIntroSection = () => {
             width={700}
             height={500}
             // Removed Image-specific motion to use the wrapper's motion.div
-            className="object-cover shadow-lg" 
+            className="object-cover shadow-lg"
           />
         </motion.div>
 
@@ -82,13 +82,23 @@ export const AboutIntroSection = () => {
             bring world-class financial insight with a personal touch.
           </motion.p>
 
-          <motion.div
-            variants={textItemVariants} // Applies individual item animation
-            className="mt-6 sm:mt-10"
-          >
-            <Button variant="dark" size="hero">
-              <span>Read More</span>
-            </Button>
+          <motion.div variants={textItemVariants} className="mt-6 sm:mt-10">
+            <Link href="/About" className="inline-block">
+              <Button
+                variant="dark"
+                size="hero"
+               className="
+  transition-transform 
+  duration-300 
+  ease-out 
+  hover:scale-105 
+  hover:-translate-y-1
+"
+
+              >
+                <span>Read More</span>
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

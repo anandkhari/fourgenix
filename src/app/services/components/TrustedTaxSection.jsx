@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function TrustedTaxSection() {
   return (
     <section className="relative w-full bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 sm:py-16 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}

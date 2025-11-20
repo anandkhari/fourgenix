@@ -184,17 +184,25 @@ export const ContactSection = () => {
             <ContactInfoItem
               icon={PhoneIcon}
               title="Call us"
-              content="+60-998930645"
+              content={
+    <>
+      +91 8089916416 <br />
+      +91 9496197367
+    </>
+  }
             />
             <ContactInfoItem
               icon={EnvelopeIcon}
               title="Email us"
-              content="Fourgenix@gmail.com"
+              content="fourgenixp@gmail.com"
             />
             <ContactInfoItem
               icon={MapPinIcon}
               title="Head office"
-              content="Sanfranciso,USA, Tower 24, Church Street"
+              content=" Fourgenix Partners LLC
+            7901 4th St N, Ste 300 
+            St. Petersburg, FL 33702
+            United States"
             />
           </div>
         </motion.div>

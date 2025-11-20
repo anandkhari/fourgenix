@@ -1,8 +1,9 @@
 "use client"; // Essential for Framer Motion client-side functionality
+import Link from "next/link";
 
 import React from "react";
 import Image from "next/image";
-import { Button } from './ui/button';
+import { Button } from "./ui/button";
 import { motion } from "framer-motion"; // Import motion
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"; // Kept but unused
 
@@ -23,7 +24,8 @@ const textItemVariants = {
 // 3. Variants for the Stat Cards (staggered grid)
 const statCardVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({ // Use function for staggered delay based on index
+  visible: (i) => ({
+    // Use function for staggered delay based on index
     opacity: 1,
     y: 0,
     transition: {
@@ -37,16 +39,16 @@ const statCardVariants = {
 // --- Component ---
 
 const stats = [
-  { id: 1, name: "User Satisfied", value: "17.8M" },
-  { id: 2, name: "User Satisfied", value: "17.8M" },
-  { id: 3, name: "User Satisfied", value: "17.8M" },
+  // Added stats
+  { id: 4, name: "Years of Experience", value: "12+" },
+  { id: 5, name: "Returns Filed Per Year", value: "500+" },
+  { id: 6, name: "Specialist Professionals", value: "10+" },
 ];
 
 export const WhyPartnerSection = () => {
   return (
     <section className="bg-gray-100 py-12 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
-        
         {/* Top Grey Box - Main Content Block Animation */}
         <motion.div
           variants={mainContentVariants}
@@ -56,7 +58,6 @@ export const WhyPartnerSection = () => {
           className="rounded-3xl bg-gray-100 p-6 sm:p-12 lg:p-16"
         >
           <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-5 lg:gap-16">
-            
             {/* Column 1: Text - Sub-staggered */}
             <div className="flex flex-col lg:col-span-2">
               <motion.h2
@@ -69,16 +70,28 @@ export const WhyPartnerSection = () => {
                 variants={textItemVariants}
                 className="mt-4 sm:mt-6 body"
               >
-                We specialize in U.S. individual and expat taxation, providing custom-made strategies
-                to minimize your liability while ensuring 100% compliance. We don't just file your returns; we build a custom-made strategy just for you.
+                We specialize in U.S. individual and expat taxation, providing
+                custom-made strategies to minimize your liability while ensuring
+                100% compliance. We don't just file your returns; we build a
+                custom-made strategy just for you.
               </motion.p>
-              <motion.div
-                variants={textItemVariants}
-                className="mt-6 sm:mt-10"
-              >
-                <Button variant="dark" size="hero">
-                  Learn More
-                </Button>
+           
+              <motion.div variants={textItemVariants} className="mt-6 sm:mt-10">
+                <Link href="#services" scroll={true}>
+                  <Button
+                    variant="dark"
+                    size="hero"
+                    className="
+        transition-transform 
+        duration-300 
+        ease-out 
+        hover:scale-105 
+        hover:shadow-lg
+      "
+                  >
+                    Learn More
+                  </Button>
+                </Link>
               </motion.div>
             </div>
 
@@ -117,10 +130,12 @@ export const WhyPartnerSection = () => {
               className="flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-2xl bg-white p-6 sm:p-8 shadow-lg"
             >
               <div>
-                <h3 className="text-3xl sm:text-4xl font-medium text-gray-900">
+                <h3 className="text-3xl sm:text-4xl font-worksans font-medium text-gray-900">
                   {stat.value}
                 </h3>
-                <p className="mt-2 text-sm sm:text-base text-gray-600">{stat.name}</p>
+                <p className="mt-2 text-sm sm:text-base font-poppins text-gray-600">
+                  {stat.name}
+                </p>
               </div>
             </motion.div>
           ))}

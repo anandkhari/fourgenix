@@ -7,21 +7,27 @@ import { motion } from "framer-motion";
 
 const footerLinks = {
   quick: [
-    { title: "Home", href: "/" },
-    { title: "About Us", href: "/about" },
+    { title: "Profiles", href: "/audience" },
     { title: "Services", href: "/services" },
+    { title: "About", href: "/about" },
+    { title: "Blog", href: "/blog" },
     { title: "Contact", href: "/contact" },
   ],
+
   visit: [
-    { title: "FOURGENIX PARTNERS LLC" },
+    { title: "Fourgenix Partners LLC" },
     { title: "7901 4th St N, Ste 300" },
-    { title: "St. Petersburg, FL" },
+    { title: "St. Petersburg, FL 33702" },
+    { title: "United States" },
   ],
+
   contact: [
-    { title: "Fourgenix@gmail.com", href: "mailto:Fourgenix@gmail.com" },
-    { title: "+60-998930645", href: "tel:+60998930645" },
+    { title: "+91 8089916416", href: "tel:+918089916416" },
+    { title: "+91 9496197367", href: "tel:+919496197367" },
+    { title: "fourgenixp@gmail.com", href: "mailto:fourgenixp@gmail.com" },
   ],
 };
+
 
 // Framer motion variants
 const fadeUp = {
@@ -95,7 +101,7 @@ const Footer = () => {
           className="relative z-10 mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-20 border-t border-white/20 pt-12"
         >
           {/* Logo */}
-          <motion.div variants={fadeUp} className="flex justify-start sm:justify-start">
+          <motion.div variants={fadeUp} className="flex justify-start pl-0 sm:justify-start">
             <Image
               src="/logo-dark.png"
               alt="Fourgenix Brand"
