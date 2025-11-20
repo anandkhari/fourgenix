@@ -5,11 +5,16 @@ import { MessageCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function WhatsAppButton() {
-  const phone = "+916238489569";
-  const message = encodeURIComponent("Hello! I’d like to know more about your services.");
+  const phone = "+918089916416";
+
+  // Updated welcome message
+  const message = encodeURIComponent(
+    "Hello! Can I know more about Fourgenix and the services you provide?"
+  );
+
   const pathname = usePathname();
 
-  // Hide on contact page (optional)
+  // Hide button on contact page (optional)
   if (pathname === "/contact") return null;
 
   return (
