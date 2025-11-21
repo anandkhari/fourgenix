@@ -7,7 +7,7 @@ export const Button = ({
   ...props
 }) => {
   const baseStyle =
-    'inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 font-light transition-colors';
+    'inline-flex items-center justify-between gap-2 rounded-full px-5 py-2 font-light transition-colors';
 
   // Define variants based on your design
   const variants = {
