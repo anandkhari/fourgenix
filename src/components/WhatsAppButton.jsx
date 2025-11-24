@@ -36,7 +36,7 @@ export default function WhatsAppButton() {
 
   return (
     <motion.div
-      className="fixed bottom-10 right-10 z-[999] flex flex-col items-end gap-2"
+      className="fixed bottom-7 right-7 z-[999] flex flex-col items-end gap-2"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
