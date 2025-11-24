@@ -36,7 +36,7 @@ export const HeroSection = () => {
       style={{ backgroundImage: "url(hero.jpg)" }}
     >
       {/* 🔆 Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/80 to-white/5 backdrop-blur-[1px]"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-white/40 to-white/5 backdrop-blur-[1px]"></div>
 
       {/* Hero Content */}
       <div className="relative max-w-7xl mr-10 ">
